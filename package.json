@@ -43,7 +43,18 @@
   "keywords": [
     "react-native",
     "android",
-    "wallpaper"
+    "wallpaper",
+    "react-native-wallpaper",
+    "wallpaper-manager",
+    "react-native-wallpaper-manager",
+    "set-wallpaper",
+    "set-wallpaper-react-native",
+    "wallpaper-manager-app",
+    "react-native-wallpaper-manager-app",
+    "android-wallpaper",
+    "change-wallpaper",
+    "wallpaper-setter",
+    "nitro-modules"
   ],
   "repository": {
     "type": "git",
