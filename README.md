@@ -1,26 +1,58 @@
-# react-native-wallpaper-set
+# react-native-nitro-wallpaper
 
-set wallpaper on react native 
+Set wallpaper on React Native (Android only)
 
 ## Installation
 
-
 ```sh
-npm install react-native-wallpaper-set react-native-nitro-modules
-
-> `react-native-nitro-modules` is required as this library relies on [Nitro Modules](https://nitro.margelo.com/).
+npm install react-native-nitro-wallpaper react-native-nitro-modules
 ```
 
+> `react-native-nitro-modules` is required as this library relies on [Nitro Modules](https://nitro.margelo.com/).
+
+### Android Setup
+
+No additional setup required. The library will be automatically linked.
+
+> **Note:** This library is Android-only. iOS is not supported. If you try to use it on iOS, it will throw an error.
 
 ## Usage
 
-
 ```js
-import { multiply } from 'react-native-wallpaper-set';
+import { WallpaperSet } from 'react-native-nitro-wallpaper';
 
-// ...
+// Set wallpaper from URL
+await WallpaperSet.setWallpaper('https://example.com/image.jpg');
 
-const result = multiply(3, 7);
+// Set wallpaper from local file path
+await WallpaperSet.setWallpaper('/storage/emulated/0/Pictures/wallpaper.jpg');
+
+// Set wallpaper from file URI
+await WallpaperSet.setWallpaper('file:///storage/emulated/0/Pictures/wallpaper.jpg');
+
+// Set wallpaper from content URI
+await WallpaperSet.setWallpaper('content://media/external/images/media/123');
+```
+
+### Example
+
+```jsx
+import React from 'react';
+import { Button, Alert } from 'react-native';
+import { WallpaperSet } from 'react-native-nitro-wallpaper';
+
+function App() {
+  const handleSetWallpaper = async () => {
+    try {
+      await WallpaperSet.setWallpaper('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+      Alert.alert('Success', 'Wallpaper set successfully!');
+    } catch (error) {
+      Alert.alert('Error', error.message);
+    }
+  };
+
+  return <Button title="Set Wallpaper" onPress={handleSetWallpaper} />;
+}
 ```
 
 
