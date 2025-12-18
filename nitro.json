@@ -1,0 +1,17 @@
+{
+  "cxxNamespace": ["wallpaperset"],
+  "ios": {
+    "iosModuleName": "WallpaperSet"
+  },
+  "android": {
+    "androidNamespace": ["wallpaperset"],
+    "androidCxxLibName": "wallpaperset"
+  },
+  "autolinking": {
+    "WallpaperSet": {
+      "swift": "WallpaperSet",
+      "kotlin": "WallpaperSet"
+    }
+  },
+  "ignorePaths": ["node_modules"]
+}
