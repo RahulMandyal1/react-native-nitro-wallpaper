@@ -16,13 +16,10 @@
     "src",
     "lib",
     "android",
-    "ios",
     "cpp",
     "nitrogen",
     "nitro.json",
-    "*.podspec",
     "react-native.config.js",
-    "!ios/build",
     "!android/build",
     "!android/gradle",
     "!android/gradlew",
@@ -35,7 +32,7 @@
   ],
   "scripts": {
     "example": "yarn workspace react-native-wallpaper-set-example",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
+    "clean": "del-cli android/build example/android/build example/android/app/build lib",
     "prepare": "bob build",
     "nitrogen": "nitrogen",
     "typecheck": "tsc",
@@ -45,8 +42,8 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "android",
+    "wallpaper"
   ],
   "repository": {
     "type": "git",
@@ -162,7 +159,7 @@
   },
   "create-react-native-library": {
     "type": "nitro-module",
-    "languages": "kotlin-swift",
+    "languages": "kotlin",
     "tools": [
       "eslint",
       "jest",
