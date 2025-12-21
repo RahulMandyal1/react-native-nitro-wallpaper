@@ -15,4 +15,3 @@ export const WallpaperSet = {
     return WallpaperSetNative.setWallpaper(image);
   },
 };
-
