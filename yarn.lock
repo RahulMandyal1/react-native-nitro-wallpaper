@@ -10101,6 +10101,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-image-picker@npm:^7.1.2":
+  version: 7.2.3
+  resolution: "react-native-image-picker@npm:7.2.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/0da1133e1ea2474577ebb91ba8af2f567d131489781ba2a73af0198f100c1ba5390cc9479e492abd7dd217c8bedc6f41794e961c7125aced9068ced07f2d96f5
+  languageName: node
+  linkType: hard
+
 "react-native-monorepo-config@npm:^0.3.1":
   version: 0.3.1
   resolution: "react-native-monorepo-config@npm:0.3.1"
@@ -10166,7 +10176,6 @@ __metadata:
     "@babel/runtime": "npm:^7.25.0"
     "@react-native-community/cli": "npm:20.0.0"
     "@react-native-community/cli-platform-android": "npm:20.0.0"
-    "@react-native-community/cli-platform-ios": "npm:20.0.0"
     "@react-native/babel-preset": "npm:0.83.0"
     "@react-native/metro-config": "npm:0.83.0"
     "@react-native/typescript-config": "npm:0.83.0"
@@ -10174,6 +10183,7 @@ __metadata:
     react: "npm:19.2.0"
     react-native: "npm:0.83.0"
     react-native-builder-bob: "npm:^0.40.17"
+    react-native-image-picker: "npm:^7.1.2"
     react-native-monorepo-config: "npm:^0.3.1"
     react-native-nitro-modules: "npm:^0.31.10"
     react-native-nitro-wallpaper: "npm:*"

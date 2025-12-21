@@ -1,9 +1,8 @@
 module.exports = {
   dependency: {
     platforms: {
-      ios: {
-        podspecPath: './WallpaperSet.podspec',
-      },
+      // Android-only package, iOS not supported
+      android: {},
     },
   },
 };
