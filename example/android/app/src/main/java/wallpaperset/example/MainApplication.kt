@@ -16,14 +16,14 @@ class MainApplication : Application(), ReactApplication {
         PackageList(this).packages.apply {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // add(MyReactNativePackage())
-          add(com.margelo.nitro.wallpaperset.WallpaperSetPackage())
+          add(com.margelo.nitro.reactnativenitrowallpaper.WallpaperSetPackage())
         },
     )
   }
 
   override fun onCreate() {
     super.onCreate()
-    com.margelo.nitro.wallpaperset.WallpaperSetPackage.context = applicationContext
+    com.margelo.nitro.reactnativenitrowallpaper.WallpaperSetPackage.context = applicationContext
     loadReactNative(this)
   }
 }

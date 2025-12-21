@@ -1,8 +1,8 @@
 {
-  "cxxNamespace": ["wallpaperset"],
+  "cxxNamespace": ["reactnativenitrowallpaper"],
   "android": {
-    "androidNamespace": ["wallpaperset"],
-    "androidCxxLibName": "wallpaperset"
+    "androidNamespace": ["reactnativenitrowallpaper"],
+    "androidCxxLibName": "reactnativenitrowallpaper"
   },
   "autolinking": {
     "WallpaperSet": {
