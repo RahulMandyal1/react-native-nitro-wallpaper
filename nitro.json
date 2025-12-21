@@ -4,6 +4,9 @@
     "androidNamespace": ["reactnativenitrowallpaper"],
     "androidCxxLibName": "reactnativenitrowallpaper"
   },
+  "ios": {
+    "iosModuleName": "ReactNativeNitroWallpaper"
+  },
   "autolinking": {
     "WallpaperSet": {
       "kotlin": "WallpaperSet"
