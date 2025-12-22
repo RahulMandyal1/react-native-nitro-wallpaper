@@ -1,6 +1,6 @@
 {
   "name": "react-native-nitro-wallpaper",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Set wallpaper on React Native (Android only)",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
