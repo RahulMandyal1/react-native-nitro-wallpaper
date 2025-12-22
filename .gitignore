@@ -84,3 +84,12 @@ android/generated
 
 # React Native Nitro Modules
 nitrogen/
+
+
+
+# Ignore test coverage output directory and files
+/coverage/
+.coverage
+*.pyc
+*.log
+
