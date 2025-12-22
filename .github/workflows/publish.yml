@@ -43,7 +43,7 @@ jobs:
         run: yarn prepare
 
       - name: Setup npm for publishing
-        uses: actions/setup-node@1e60f620b9541d0be2b4b4856b8f0dfd57f8a8d8 # v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
