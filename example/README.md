@@ -1,14 +1,40 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# react-native-nitro-wallpaper Example
 
-# Getting Started
+This is an example app demonstrating how to use [`react-native-nitro-wallpaper`](../README.md) to set wallpapers on Android devices.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+This example app showcases three different ways to set wallpapers:
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **URL Tab**: Set wallpaper from a remote image URL
+- **File Path Tab**: Set wallpaper from a local file path
+- **File Picker Tab**: Pick an image from your device and set it as wallpaper
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Prerequisites
+
+> **Note**: Make sure you have completed the [React Native Environment Setup](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+
+- Node.js >= 20
+- Android development environment set up
+- Android device or emulator
+
+## Installation
+
+This example app is part of a monorepo. From the root directory, install dependencies:
+
+```sh
+# Using npm
+npm install
+
+# OR using Yarn
+yarn install
+```
+
+## Running the Example
+
+### Step 1: Start Metro
+
+From the root of the project, start the Metro bundler:
 
 ```sh
 # Using npm
@@ -18,55 +44,57 @@ npm start
 yarn start
 ```
 
-## Step 2: Build and run your app
+### Step 2: Run on Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use the following command to build and run your Android app:
-
-### Android
+With Metro running, open a new terminal window/pane and run:
 
 ```sh
-# Using npm
-npm run android
+# From the root directory
+npm run example android
 
 # OR using Yarn
+yarn example android
+
+# OR navigate to the example directory
+cd example
+npm run android
+# OR
 yarn android
 ```
 
 > **Note:** This library is Android-only. iOS is not supported.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator or your connected device.
+If everything is set up correctly, you should see the example app running in the Android Emulator or your connected device.
 
-This is one way to run your app — you can also build it directly from Android Studio.
+## Usage
 
-## Step 3: Modify your app
+The example app demonstrates how to use the `WallpaperSet` API:
 
-Now that you have successfully run the app, let's make changes!
+```tsx
+import { WallpaperSet } from 'react-native-nitro-wallpaper';
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+// Set wallpaper from URL
+await WallpaperSet.setWallpaper('https://example.com/image.jpg');
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+// Set wallpaper from local file path
+await WallpaperSet.setWallpaper('/storage/emulated/0/Pictures/wallpaper.jpg');
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
+// Set wallpaper from file URI
+await WallpaperSet.setWallpaper('file:///storage/emulated/0/Pictures/wallpaper.jpg');
+```
 
-## Congratulations! :tada:
+## Project Structure
 
-You've successfully run and modified your React Native App. :partying_face:
+- `src/App.tsx` - Main app component with tab navigation
+- `src/components/` - Reusable components for each tab
+  - `Tabs.tsx` - Tab navigation component
+  - `UrlTab.tsx` - URL input tab
+  - `FilePathTab.tsx` - File path input tab
+  - `FilePickerTab.tsx` - Image picker tab
+  - `SetWallpaperButton.tsx` - Button component for setting wallpaper
 
-### Now what?
+## Learn More
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- [Main Library README](../README.md) - Full documentation for `react-native-nitro-wallpaper`
+- [React Native Documentation](https://reactnative.dev/docs/getting-started) - Learn more about React Native
+- [Nitro Modules](https://nitro.margelo.com/) - Learn about the Nitro Modules architecture
