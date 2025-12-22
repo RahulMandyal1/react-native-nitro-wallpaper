@@ -14,7 +14,12 @@ module.exports = {
         // Codegen script incorrectly fails without this
         // So we explicitly specify the platforms with empty object
         ios: {},
-        android: {},
+        android: {
+          sourceDir: path.join(__dirname, '../android'),
+          packageImportPath:
+            'import com.margelo.nitro.reactnativenitrowallpaper.WallpaperSetPackage;',
+          packageInstance: 'new WallpaperSetPackage()',
+        },
       },
     },
   },
