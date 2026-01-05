@@ -21,7 +21,7 @@ No additional setup required. The library will be automatically linked.
 ```js
 import { WallpaperSet } from 'react-native-nitro-wallpaper';
 
-// Set wallpaper from URL
+// Set wallpaper from URL (Sets both Home and Lock screens by default)
 await WallpaperSet.setWallpaper('https://example.com/image.jpg');
 
 // Set wallpaper from local file path
@@ -32,6 +32,11 @@ await WallpaperSet.setWallpaper('file:///storage/emulated/0/Pictures/wallpaper.j
 
 // Set wallpaper from content URI
 await WallpaperSet.setWallpaper('content://media/external/images/media/123');
+
+// Set specific screen
+await WallpaperSet.setWallpaper('https://example.com/image.jpg', 'home'); // Home screen only
+await WallpaperSet.setWallpaper('https://example.com/image.jpg', 'lock'); // Lock screen only
+await WallpaperSet.setWallpaper('https://example.com/image.jpg', 'both'); // Both screens
 ```
 
 ### Example
