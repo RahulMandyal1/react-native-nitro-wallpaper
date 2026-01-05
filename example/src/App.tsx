@@ -6,6 +6,7 @@ import {
   Alert,
   ScrollView,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import type { ImagePickerResponse, MediaType } from 'react-native-image-picker';
@@ -16,6 +17,7 @@ import { FilePathTab } from './components/FilePathTab';
 import { FilePickerTab } from './components/FilePickerTab';
 
 type Tab = 'url' | 'path' | 'picker';
+type Location = 'home' | 'lock' | 'both';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('url');
@@ -24,6 +26,7 @@ export default function App() {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [location, setLocation] = useState<Location>('both');
 
   const handleSetWallpaper = async (imageSource: string) => {
     if (!imageSource.trim()) {
@@ -33,8 +36,8 @@ export default function App() {
 
     setLoading(true);
     try {
-      await WallpaperSet.setWallpaper(imageSource);
-      Alert.alert('Success', 'Wallpaper set successfully!');
+      await WallpaperSet.setWallpaper(imageSource, location);
+      Alert.alert('Success', `Wallpaper set to ${location} successfully!`);
     } catch (error) {
       Alert.alert(
         'Error',
@@ -72,6 +75,33 @@ export default function App() {
       }
     );
   };
+
+  const renderLocationSelector = () => (
+    <View style={styles.selectorContainer}>
+      <Text style={styles.selectorLabel}>Set for:</Text>
+      <View style={styles.selectorButtons}>
+        {(['home', 'lock', 'both'] as Location[]).map((loc) => (
+          <TouchableOpacity
+            key={loc}
+            onPress={() => setLocation(loc)}
+            style={[
+              styles.selectorButton,
+              location === loc && styles.selectorButtonActive,
+            ]}
+          >
+            <Text
+              style={[
+                styles.selectorText,
+                location === loc && styles.selectorTextActive,
+              ]}
+            >
+              {loc.toUpperCase()}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -129,6 +159,7 @@ export default function App() {
           <Text style={styles.subtitle}>Set your perfect wallpaper</Text>
         </View>
         <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
+        {renderLocationSelector()}
         {renderTabContent()}
       </ScrollView>
     </View>
@@ -163,5 +194,40 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#888',
     fontWeight: '500',
+  },
+  selectorContainer: {
+    paddingHorizontal: 24,
+    marginBottom: 20,
+  },
+  selectorLabel: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 12,
+  },
+  selectorButtons: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  selectorButton: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 12,
+    backgroundColor: '#1a1a1a',
+    borderWidth: 1,
+    borderColor: '#2a2a2a',
+    alignItems: 'center',
+  },
+  selectorButtonActive: {
+    backgroundColor: '#fff',
+    borderColor: '#fff',
+  },
+  selectorText: {
+    color: '#666',
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  selectorTextActive: {
+    color: '#000',
   },
 });
