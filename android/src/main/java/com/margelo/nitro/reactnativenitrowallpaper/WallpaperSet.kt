@@ -11,7 +11,7 @@ import java.net.URL
 
 @DoNotStrip
 class WallpaperSet : HybridWallpaperSetSpec() {
-  override fun setWallpaper(image: String): Promise<Unit> {
+  override fun setWallpaper(image: String, location: Double): Promise<Unit> {
     val promise = Promise<Unit>()
     val context = WallpaperSetPackage.context
     if (context == null) {
@@ -41,7 +41,11 @@ class WallpaperSet : HybridWallpaperSetSpec() {
           throw Exception("Failed to decode bitmap from: $image")
         }
 
-        wallpaperManager.setBitmap(bitmap)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+          wallpaperManager.setBitmap(bitmap, null, true, location.toInt())
+        } else {
+          wallpaperManager.setBitmap(bitmap)
+        }
         promise.resolve(Unit)
       } catch (e: Throwable) {
         promise.reject(e)
