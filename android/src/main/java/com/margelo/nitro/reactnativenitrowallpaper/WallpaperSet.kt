@@ -6,6 +6,7 @@ import android.app.WallpaperManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.content.Context
 import com.margelo.nitro.core.Promise
 import java.net.URL
 
@@ -13,9 +14,21 @@ import java.net.URL
 class WallpaperSet : HybridWallpaperSetSpec() {
   override fun setWallpaper(image: String, location: Double): Promise<Unit> {
     val promise = Promise<Unit>()
-    val context = WallpaperSetPackage.context
+    // Try to get context from package first, then fallback to current application
+    var context: Context? = WallpaperSetPackage.context
     if (context == null) {
-      promise.reject(Exception("Context not initialized"))
+      // Fallback: try to get context from current application
+      try {
+        val activityThread = Class.forName("android.app.ActivityThread")
+        val currentApplication = activityThread.getMethod("currentApplication").invoke(null) as? android.app.Application
+        context = currentApplication?.applicationContext
+      } catch (e: Exception) {
+        // Fallback failed, context is still null
+      }
+    }
+    
+    if (context == null) {
+      promise.reject(Exception("Context not initialized. Make sure the package is properly registered in your MainApplication."))
       return promise
     }
 

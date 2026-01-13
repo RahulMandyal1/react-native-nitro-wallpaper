@@ -11,7 +11,7 @@
     "react": "19.2.0",
     "react-native": "0.83.0",
     "react-native-image-picker": "^7.1.2",
-    "react-native-nitro-modules": "^0.31.10",
+    "react-native-nitro-modules": "^0.33.0",
     "react-native-nitro-wallpaper": "*"
   },
   "devDependencies": {

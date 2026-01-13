@@ -9,13 +9,12 @@ import android.util.Log
 
 class WallpaperSetPackage : BaseReactPackage() {
     override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
+        // Set context here for Nitro modules
+        if (context == null) {
+            context = reactContext.applicationContext
+            Log.d("WallpaperSetPackage", "Context set in getModule")
+        }
         return null
-    }
-
-    override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
-        Log.d("WallpaperSetPackage", "createNativeModules called!")
-        context = reactContext
-        return super.createNativeModules(reactContext) as MutableList<NativeModule>
     }
 
     override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
@@ -25,7 +24,9 @@ class WallpaperSetPackage : BaseReactPackage() {
     companion object {
         var context: android.content.Context? = null
         init {
-            System.loadLibrary("reactnativenitrowallpaper")
+            // Initialize the native Nitro module early - this registers the HybridObject in the registry
+            // This must be called before any JS code tries to use the module
+            reactnativenitrowallpaperOnLoad.initializeNative()
         }
     }
 }
